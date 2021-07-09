@@ -25,5 +25,10 @@
 
     <actions>
         <!-- Add your actions here -->
+        <group id="YCRMenu" text="YCR" popup="true" compact="true">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            <action class="com.ysj.idea.plugin.ycr.HelpAction" text="Help" icon="AllIcons.Actions.Help"/>
+            <action class="com.ysj.idea.plugin.ycr.AboutAction" text="About"/>
+        </group>
     </actions>
 </idea-plugin>
