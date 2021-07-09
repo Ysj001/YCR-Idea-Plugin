@@ -1,0 +1,29 @@
+<idea-plugin>
+    <id>com.ysj.idea.plugin.ycr</id>
+    <name>YCR</name>
+    <vendor email="543501451@qq.com" url="https://Ysj001.github.io">Ysj</vendor>
+
+    <description>
+        Thank you for using this plugin.
+        =============================================
+        This is a plugin that works with the YCR lib.
+        See:
+        https://github.com/Ysj001/YCR
+        https://github.com/Ysj001/YCR-Idea-Plugin
+    </description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.java</depends>
+
+    <!-- 支持 language="kotlin" see: https://plugins.jetbrains.com/docs/intellij/plugin-dependencies.html?from=jetbrains.org&q=KtElement#locating-plugin-id-and-preparing-sandbox -->
+    <depends>org.jetbrains.kotlin</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
