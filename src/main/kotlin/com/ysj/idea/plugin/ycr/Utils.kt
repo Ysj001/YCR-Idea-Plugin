@@ -43,6 +43,20 @@ fun KtElement.buildArgs(): List<KtValueArgument>? {
 }
 
 /**
+ * 获取 @Route 注解的全 path
+ */
+fun PsiMember.routePath() = getAnnotation(ROUTE_ANNOTATION_NAME)?.run {
+    val path = findAttributeValue("path")
+    val group = findAttributeValue("group")
+    if (path !is PsiLiteralValue) return@run ""
+    when {
+        group !is PsiLiteralValue -> path.value
+        group.value.toString().isEmpty() -> path.value
+        else -> "$this/${path.value}"
+    }.toString()
+}
+
+/**
  * 查找工程中所有 @Route 注解
  */
 fun Project.findRouteAnnotations(): Collection<PsiMember>? {

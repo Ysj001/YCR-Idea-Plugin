@@ -65,12 +65,7 @@ class RoutePathContributor : CompletionContributor() {
         insertHandler: InsertHandler<LookupElement>,
     ) = project.findRouteAnnotations()?.mapNotNull {
         val annotation = it.getAnnotation(ROUTE_ANNOTATION_NAME) ?: return@mapNotNull null
-        val path = annotation.findAttributeValue("path")
-        val group = annotation.findAttributeValue("group")
-        if (path !is PsiLiteralValue || group !is PsiLiteralValue) return@mapNotNull null
-        val targetPath = group.value.toString().run {
-            if (isEmpty()) path.value.toString() else "$this/${path.value}"
-        }
+        val targetPath = it.routePath() ?: return@mapNotNull null
         LookupElementBuilder.create(if (inputValue == null) "\"$targetPath\"" else targetPath)
             .withTailText(" " + (annotation.parent.parent.cast<PsiClass>())?.qualifiedName)
             .withTypeText("YCR")

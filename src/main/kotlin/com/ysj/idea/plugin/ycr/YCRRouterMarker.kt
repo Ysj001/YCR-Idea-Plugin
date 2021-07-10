@@ -30,14 +30,7 @@ class YCRRouterMarker : LineMarkerProviderDescriptor() {
 
     private fun searchTarget(element: PsiElement): Navigatable? {
         val routePath = matchRoutePath(element) ?: return null
-        return element.project.findRouteAnnotations()?.find { mb ->
-            routePath in mb.annotations.mapNotNull { ann ->
-                val path = ann.findAttributeValue("path")
-                val group = ann.findAttributeValue("group")
-                if (path !is PsiLiteralValue || group !is PsiLiteralValue) return@mapNotNull null
-                group.value.toString().run { if (isEmpty()) path.value else "$this/${path.value}" }
-            }
-        }
+        return element.project.findRouteAnnotations()?.find { mb -> routePath == mb.routePath() }
     }
 
     private fun matchRoutePath(element: PsiElement) =
