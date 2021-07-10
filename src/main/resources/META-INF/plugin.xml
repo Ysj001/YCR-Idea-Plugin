@@ -22,6 +22,9 @@
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <codeInsight.lineMarkerProvider language="JVM" implementationClass="com.ysj.idea.plugin.ycr.YCRRouterMarker"/>
+        <completion.contributor language="JVM"
+                                order="first"
+                                implementationClass="com.ysj.idea.plugin.ycr.RoutePathContributor"/>
     </extensions>
 
     <actions>
