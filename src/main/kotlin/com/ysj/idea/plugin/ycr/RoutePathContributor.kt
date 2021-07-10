@@ -37,9 +37,8 @@ class RoutePathContributor : CompletionContributor() {
                     element.results(inputValue) { context, item ->
                         if (inputValue.isNullOrEmpty()) return@results
                         element.buildArgs()?.get(0)?.run {
-                            val length = text.replace(item.lookupString, "").length
-                            val start = textRange.startOffset
-                            context.document.deleteString(start + 1, start + length - 1)
+                            val startOffset = textRange.startOffset
+                            context.document.replaceString(startOffset, textRange.endOffset, "\"${item.lookupString}\"")
                         }
                     } ?: return
                 }
@@ -51,9 +50,8 @@ class RoutePathContributor : CompletionContributor() {
                     element.results(inputValue) { context, item ->
                         if (inputValue.isNullOrEmpty()) return@results
                         element.cast<KtElement>()?.buildArgs()?.get(0)?.cast<PsiElement>()?.run {
-                            val length = text.replace(item.lookupString, "").length
-                            val start = textRange.startOffset
-                            context.document.deleteString(start + 1, start + length - 1)
+                            val startOffset = textRange.startOffset
+                            context.document.replaceString(startOffset, textRange.endOffset, "\"${item.lookupString}\"")
                         }
                     } ?: return
                 }
