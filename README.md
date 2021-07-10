@@ -4,7 +4,7 @@
 
 - 支持便捷定位路由目标。
 
-  ![RouteMarker](\assets\RouteMarker.gif)
+  ![RouteMarker](./assets/RouteMarker.gif)
 
 - 支持 build 方法 path 内容提示和自动补全功能。
 
@@ -13,5 +13,5 @@
   - Windows: Ctrl+Shift+Space
   - MacOS: ⌃⇧Space
   
-  ![RouteMarker](\assets\PathContributor.png)
+  ![RouteMarker](./assets/PathContributor.png)
 
