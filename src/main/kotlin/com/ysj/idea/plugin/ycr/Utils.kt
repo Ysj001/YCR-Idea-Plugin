@@ -4,14 +4,10 @@ import com.intellij.openapi.project.Project
 import com.intellij.psi.*
 import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.psi.search.searches.AnnotatedMembersSearch
-import com.intellij.psi.util.contextOfType
 import com.intellij.util.Query
 import org.jetbrains.kotlin.idea.debugger.sequence.psi.callName
-import org.jetbrains.kotlin.idea.debugger.sequence.psi.resolveType
-import org.jetbrains.kotlin.idea.refactoring.fqName.fqName
 import org.jetbrains.kotlin.psi.KtCallExpression
 import org.jetbrains.kotlin.psi.KtElement
-import org.jetbrains.kotlin.psi.KtFunctionType
 import org.jetbrains.kotlin.psi.KtValueArgument
 
 /*
@@ -47,7 +43,7 @@ fun KtElement.buildArgs(): List<KtValueArgument>? {
 /**
  * 获取 @Route 注解的全 path
  */
-fun PsiMember.routePath() = getAnnotation(ROUTE_ANNOTATION_NAME)?.routePath()
+fun PsiMember.routePath() = getAnnotation(ANNOTATION_NAME_ROUTE)?.routePath()
 
 /**
  * 获取 @Route 注解的全 path
@@ -68,6 +64,6 @@ fun PsiAnnotation.routePath() = run {
  */
 fun Project.findRouteAnnotations(): Query<PsiMember>? {
     val allScope = GlobalSearchScope.allScope(this)
-    val routeAnnotation = JavaPsiFacade.getInstance(this).findClass(ROUTE_ANNOTATION_NAME, allScope)
+    val routeAnnotation = JavaPsiFacade.getInstance(this).findClass(ANNOTATION_NAME_ROUTE, allScope)
     return AnnotatedMembersSearch.search(routeAnnotation ?: return null, allScope)
 }
