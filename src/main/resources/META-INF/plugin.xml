@@ -28,8 +28,12 @@
 
     <actions>
         <!-- Add your actions here -->
+        <action class="com.ysj.idea.plugin.ycr.actions.GenerateConst" text="Generate Const">
+            <add-to-group group-id="NewGroup" anchor="last"/>
+        </action>
         <group id="YCRMenu" text="YCR" popup="true" compact="true">
             <add-to-group group-id="MainMenu" anchor="last"/>
+            <action class="com.ysj.idea.plugin.ycr.actions.RefreshConstFile" text="Refresh Const File"/>
             <action class="com.ysj.idea.plugin.ycr.actions.AboutAction" text="About"/>
         </group>
     </actions>

@@ -67,3 +67,12 @@ fun Project.findRouteAnnotations(): Query<PsiMember>? {
     val routeAnnotation = JavaPsiFacade.getInstance(this).findClass(ANNOTATION_NAME_ROUTE, allScope)
     return AnnotatedMembersSearch.search(routeAnnotation ?: return null, allScope)
 }
+
+/**
+ * 查找工程中所有 @YCRGenerated 注解
+ */
+fun Project.findYCRGeneratedAnnotations(): Query<PsiMember>? {
+    val allScope = GlobalSearchScope.allScope(this)
+    val annotation = JavaPsiFacade.getInstance(this).findClass(ANNOTATION_NAME_YCR_GENERATED, allScope)
+    return AnnotatedMembersSearch.search(annotation ?: return null, allScope)
+}

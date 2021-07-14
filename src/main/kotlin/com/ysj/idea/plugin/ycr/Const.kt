@@ -15,3 +15,4 @@ const val SDK_PACKAGE_NAME = "com.ysj.lib.ycr"
 
 const val ANNOTATION_NAME_ROUTE = "$SDK_PACKAGE_NAME.annotation.Route"
 
+const val ANNOTATION_NAME_YCR_GENERATED = "$SDK_PACKAGE_NAME.annotation.YCRGenerated"
