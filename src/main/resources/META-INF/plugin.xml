@@ -3,14 +3,12 @@
     <name>YCR</name>
     <vendor email="543501451@qq.com" url="https://Ysj001.github.io">Ysj</vendor>
 
-    <description>
-        Thank you for using this plugin.
-        =============================================
-        This is a plugin that works with the YCR lib.
-        See:
-        https://github.com/Ysj001/YCR
-        https://github.com/Ysj001/YCR-Idea-Plugin
-    </description>
+    <description><![CDATA[
+        Thank you for using this plugin.<br/>
+        This is a plugin that works with the YCR lib.<br/>
+        https://github.com/Ysj001/YCR<br/>
+        https://github.com/Ysj001/YCR-Idea-Plugin<br/>
+    ]]></description>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
@@ -21,18 +19,18 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <codeInsight.lineMarkerProvider language="JVM" implementationClass="com.ysj.idea.plugin.ycr.YCRRouterMarker"/>
+        <codeInsight.lineMarkerProvider language="JVM"
+                                        implementationClass="com.ysj.idea.plugin.ycr.extensions.YCRRouterMarker"/>
         <completion.contributor language="JVM"
                                 order="first"
-                                implementationClass="com.ysj.idea.plugin.ycr.RoutePathContributor"/>
+                                implementationClass="com.ysj.idea.plugin.ycr.extensions.RoutePathContributor"/>
     </extensions>
 
     <actions>
         <!-- Add your actions here -->
         <group id="YCRMenu" text="YCR" popup="true" compact="true">
             <add-to-group group-id="MainMenu" anchor="last"/>
-            <action class="com.ysj.idea.plugin.ycr.HelpAction" text="Help" icon="AllIcons.Actions.Help"/>
-            <action class="com.ysj.idea.plugin.ycr.AboutAction" text="About"/>
+            <action class="com.ysj.idea.plugin.ycr.actions.AboutAction" text="About"/>
         </group>
     </actions>
 </idea-plugin>
