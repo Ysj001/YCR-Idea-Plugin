@@ -8,7 +8,6 @@ import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.Messages
 import com.intellij.psi.*
-import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.psi.util.contextOfType
 import com.intellij.util.Processor
 import com.ysj.idea.plugin.ycr.*
@@ -16,6 +15,8 @@ import com.ysj.idea.plugin.ycr.*
 private var PACKAGE_NAME: String = ""
 
 private const val CLASS_NAME = "YCRConst"
+
+private const val SUPPRESS_WARNING_JAVADOC = "@SuppressWarnings(\"JavadocReference\")"
 
 /**
  * 生成 YCR 相关常量
@@ -77,6 +78,7 @@ private fun Project.generateYCRConst(
         setModifierProperty("final", true)
     }
     psiFile.addBefore(factory.createAnnotationFromText("@$ANNOTATION_NAME_YCR_GENERATED", ycrConstClass), ycrConstClass)
+    psiFile.addBefore(factory.createAnnotationFromText(SUPPRESS_WARNING_JAVADOC, ycrConstClass), ycrConstClass)
     ycrConstClass.navigate(true)
     val routeClass = ycrConstClass.add(factory.createClass("route")) as PsiClass
     routeClass.modifierList?.apply {
